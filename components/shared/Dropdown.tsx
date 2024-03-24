@@ -6,7 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ICategory } from "@/lib/database/models/category.mode";
-import { startTransition, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +19,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "../ui/input";
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions";
 
 type DropdownProps = {
   value: string;
@@ -29,7 +33,23 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewCategory] = useState("");
 
-  const handleAddCategory = () => {};
+  const handleAddCategory = () => {
+    createCategory({
+      categoryName: newCategory.trim(),
+    }).then((category: any) => {
+      setCategories((prevState) => [...prevState, category]);
+    });
+  };
+  useEffect(() => {
+    const getCategoires = async () => {
+      const categoryList = await getAllCategories();
+      console.log(categoryList);
+
+      categoryList && setCategories(categoryList as ICategory[]);
+    };
+    getCategoires();
+    console.log("hey");
+  }, []);
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
@@ -49,7 +69,7 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
           ))}
         <AlertDialog>
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-[#6d28d9] hover:bg-primary-50 focus:text-primary-50">
-            Open
+            Add new category
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
             <AlertDialogHeader>
