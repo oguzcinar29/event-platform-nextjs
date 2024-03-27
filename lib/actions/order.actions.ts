@@ -50,6 +50,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
 };
 
 export const createOrder = async (order: CreateOrderParams) => {
+  const hey = "21";
   try {
     await connectToDatabase();
 
