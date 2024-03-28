@@ -166,7 +166,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="imageUrl"
             render={({ field }) => (
@@ -181,7 +181,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
         </div>
 
         <div className="flex flex-col gap-5 md:flex-row">
@@ -347,7 +347,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                     <Input
                       placeholder="URL"
                       {...field}
-                      className="input-field"
+                      className="input-field bg-gray-50"
                     />
                   </div>
                 </FormControl>

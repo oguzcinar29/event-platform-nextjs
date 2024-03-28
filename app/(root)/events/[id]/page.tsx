@@ -27,7 +27,7 @@ const EventDetails = async ({
           <img
             src={event.imageUrl}
             alt="hero image"
-            className="h-full min-h-[300px] object-cover object-center"
+            className="h-full max-h-[800px] w-full object-cover object-center"
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
