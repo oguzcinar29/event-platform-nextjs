@@ -34,6 +34,7 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
   const [newCategory, setNewCategory] = useState("");
 
   const handleAddCategory = () => {
+    const hey = "12";
     createCategory({
       categoryName: newCategory.trim(),
     }).then((category: any) => {
