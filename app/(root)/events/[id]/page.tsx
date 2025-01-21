@@ -1,5 +1,6 @@
 import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
+import OpenEventLinkButton from "@/components/shared/OpenLink";
 import {
   getEventById,
   getRelatedEventsByCategory,
@@ -31,7 +32,7 @@ const EventDetails = async ({
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 ">
               <h2 className="h2-bold">{event.title}</h2>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -89,9 +90,7 @@ const EventDetails = async ({
             <div className="flex flex-col gap-2">
               <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
               <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
-              <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">
-                {event.url}
-              </p>
+              <OpenEventLinkButton url={event.url} />
             </div>
           </div>
         </div>
